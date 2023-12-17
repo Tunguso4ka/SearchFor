@@ -2,14 +2,22 @@
 from platform import system
 from sys import argv
 from os import listdir
-from os.path import isdir
+from os.path import isdir, exists
 
 if system() == 'Windows': slash = '\\'
 else: slash = '/' # normal peoples slash
 
-# this scripts localization
-language = 'enUS'
-locale = {}
+# localisation
+locale = {
+        'file_founded':'📄 founded in {0} on {1} line',
+        'id_founded':'🆔 founded in file name: {0}',
+        'running':'running on {0} with arguments: {1}',
+        'start_path_input':'start from: ',
+        'target_input':'target: ',
+        'searching':'\nsearching for {0} in {1}\n',
+        'empty_target':'target can`t be empty!',
+        'path_wrong':'path "{0}" does not exists.'
+        }
 # file extensions that will be scaned
 extens = ['.yml', '.dm']
 
@@ -29,15 +37,8 @@ def search_dir(path=''):
         elif isdir(start_path+path+i): search_dir(path+i+slash)
         elif target in i: print(locale['id_founded'].format(path))
 
-# import locale dictionary with strings
-def load_locale():
-    global locale
-    locale = __import__('loc.enUS', fromlist=[' ']).locale #fallback locale
-    if language != 'enUS': locale |= __import__('loc.'+language, fromlist=[' ']).locale
-
 def main():
-    load_locale()
-    print(locale['running'].format(system()) + ', '.join(argv))
+    print(locale['running'].format(system(), ', '.join(argv)))
     
     # user input
     # start_path - path to the directory from which script will start scanning
@@ -47,6 +48,9 @@ def main():
 
     if target == '':
         print(locale['empty_target'])
+        return
+    if not exists(start_path):
+        print(locale['path_wrong'].format(start_path))
         return
 
     print(locale['searching'].format(target, start_path))
