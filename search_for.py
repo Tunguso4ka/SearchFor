@@ -38,6 +38,7 @@ def search_dir(path=''):
         elif target in i: print(locale['id_founded'].format(path))
 
 def main():
+    global start_path, target
     print(locale['running'].format(system(), ', '.join(argv)))
     
     # user input
