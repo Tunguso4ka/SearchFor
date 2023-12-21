@@ -3,9 +3,13 @@
 
 Stupidly simple script that i did to help my friend find entity id.
 
-Supports both Unix-like systems and bourgeoisie virus bloatware called windows.
+Supports Unix-like systems.
+
+Windows is not supported, but can work.
 
 ### Українська (Суржик)
 Ідіотські простий скріпт який я зробила щоб допомогти другу знайти айді сутності.
 
-Підтримує як Юнікс-подібні системи так і вінду (не раджу єю користуватися, переходьте скоріш на Лінукс)
+Підтримує Юнікс-подібні системи. 
+
+Можливо підтримує вінду. Але я цього не обицяю і раджу встановити Лінукс, а не їбатися з віндою.
