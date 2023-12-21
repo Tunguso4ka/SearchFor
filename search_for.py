@@ -38,7 +38,7 @@ def search_dir(path=''):
         elif target in i: print(locale['id_founded'].format(path))
 
 def end():
-    if system() == 'Windows': input() # if someone doubleclicked it on windows shitty microsoft terminal can just close it
+    if system() == 'Windows': input('\nScript now can be closed.') # if someone doubleclicked it on windows shitty microsoft terminal can just close it
     else: print()
     exit()
 
