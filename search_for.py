@@ -37,6 +37,11 @@ def search_dir(path=''):
         elif isdir(start_path+path+i): search_dir(path+i+slash)
         elif target in i: print(locale['id_founded'].format(path))
 
+def end():
+    if system() == 'Windows': input() # if someone doubleclicked it on windows shitty microsoft terminal can just close it
+    else: print()
+    exit()
+
 def main():
     global start_path, target
     print(locale['running'].format(system(), ', '.join(argv)))
@@ -49,15 +54,14 @@ def main():
 
     if target == '':
         print(locale['empty_target'])
-        return
+        end()
     if not exists(start_path):
         print(locale['path_wrong'].format(start_path))
-        return
+        end()
 
     print(locale['searching'].format(target, start_path))
     search_dir()
 
-    if system() == 'Windows': input() # if someone doubleclicked it on windows shitty microsoft terminal can just close it
-    else: print()
+    end()
 
 if __name__ == '__main__': main()
